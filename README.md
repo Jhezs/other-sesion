@@ -50,5 +50,5 @@ MIT. Ver `LICENSE`.
 
 ## Contribuidores
 
-- **Jhezs**: autor y dueño del proyecto.
-- **Claude** (Anthropic): coautor, escribió el código y la documentación junto con Jhezs.
+- **Claude** (Anthropic): escribió el código y la documentación.
+- **Jhezs**: dueño del proyecto; revisó y aprobó el código.
