@@ -30,15 +30,15 @@ One command (it works for any user; it uses your home folder, no fixed paths):
 
 ```bash
 # macOS / Linux
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Jhezs/other-sesion/main/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Jhezs/other-sesion/v1.2/install.sh)"
 ```
 
 ```powershell
 # Windows (PowerShell)
-irm https://raw.githubusercontent.com/Jhezs/other-sesion/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/Jhezs/other-sesion/v1.2/install.ps1 | iex
 ```
 
-Or clone the repository into Claude Code's skills folder by hand.
+Read the script before running it (it is short). Or clone the repository into Claude Code's skills folder by hand.
 
 macOS / Linux:
 

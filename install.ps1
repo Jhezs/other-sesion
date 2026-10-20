@@ -10,6 +10,9 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
 }
 
 if (Test-Path (Join-Path $dest ".git")) {
+    if (git -C $dest status --porcelain) {
+        Write-Error "Cambiaste archivos locales / you changed local files. Ejecuta: git -C '$dest' stash ; vuelve a ejecutar ; git -C '$dest' stash pop"
+    }
     git -C $dest pull --ff-only
 } else {
     New-Item -ItemType Directory -Force (Split-Path $dest) | Out-Null

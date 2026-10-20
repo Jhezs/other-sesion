@@ -30,15 +30,15 @@ Un solo comando (sirve para cualquier usuario; usa tu carpeta personal, sin ruta
 
 ```bash
 # macOS / Linux
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Jhezs/other-sesion/main/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Jhezs/other-sesion/v1.2/install.sh)"
 ```
 
 ```powershell
 # Windows (PowerShell)
-irm https://raw.githubusercontent.com/Jhezs/other-sesion/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/Jhezs/other-sesion/v1.2/install.ps1 | iex
 ```
 
-O clona el repositorio a mano dentro de la carpeta de skills de Claude Code.
+Lee el script antes de ejecutarlo (es corto). O clona el repositorio a mano dentro de la carpeta de skills de Claude Code.
 
 macOS / Linux:
 

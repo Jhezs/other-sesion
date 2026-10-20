@@ -29,7 +29,7 @@ Cada modo acepta su nombre en español o en inglés, con el mismo efecto: `retom
    tokens ni datos personales.
 2. **Escribe UN archivo de traspaso** en el directorio de memoria del proyecto (la ruta está en tu prompt de sistema, en
    «Memory»), con el nombre `project_traspaso.md`. Si ya existe, antes cópialo a `project_traspaso.anterior.md`
-   (una sola copia, la anterior se pisa; así `deshacer` puede restaurarlo) y **sobrescribe** el original (no acumules traspasos viejos).
+   (una sola copia, la anterior se pisa; así `deshacer` puede restaurarlo) y en la copia cambia la línea `name:` a `project-traspaso-anterior` para que no haya dos memorias con el mismo nombre y **sobrescribe** el original (no acumules traspasos viejos).
    Formato:
    ```
    ---
@@ -121,18 +121,18 @@ Hace el modo por defecto completo (traspaso, mapa, `MEMORY.md`) y termina con un
 
 ## `/other-sesion ahorro`
 
-Mide tokens reales con `ahorro.py` (en esta carpeta; lee el campo `usage` de las transcripciones, no estima). Carpeta del proyecto = `~/.claude/projects/<proyecto>` (la de tu directorio de memoria, un nivel arriba de `memory`).
-- Los modos por defecto, `clear` y `retomar` ejecutan al terminar `python <skill>/ahorro.py marcar "<modo>" "<carpeta>"` (una línea, salida ignorada). Así cada cierre y cada retomada quedan como marca.
-- `/other-sesion ahorro` ejecuta `python <skill>/ahorro.py informe "<carpeta>"` y muestra la salida tal cual, más 2 líneas de lectura: gasto desde la última marca y si el «1er contexto» de la sesión nueva es menor que el «pico» de la anterior (eso es lo que ahorró el traspaso).
+Mide tokens reales con `ahorro.py` (en esta carpeta; lee el campo `usage` de las transcripciones, no estima). El script encuentra solo la carpeta del proyecto. Ejecútalo con `python3` y, si no existe, con `python` (en macOS y Linux suele existir solo `python3`).
+- Los modos por defecto, `clear` y `retomar` ejecutan al terminar `python3 <skill>/ahorro.py marcar "<modo>"` (una línea; si falla, dilo en una frase en vez de ignorarlo). Así cada cierre y cada retomada quedan como marca.
+- `/other-sesion ahorro` ejecuta `python3 <skill>/ahorro.py informe` y muestra la salida tal cual, más 2 líneas de lectura: gasto desde la última marca y si el «1er contexto» de la sesión nueva es menor que el «pico» de la anterior (eso es lo que ahorró el traspaso).
 - Tokens ≠ dinero: la cache leída es mucho más barata que la nueva; no sumes todo como si costara igual.
 
 ## `/other-sesion estado`
 
-Ejecuta `python <skill>/ahorro.py estado` desde el directorio del proyecto y muestra su salida tal cual: turnos, contexto actual y si conviene cerrar (aviso a partir de ~150k y urgente desde ~300k). No escribe nada. `ahorro.py` calcula la carpeta del proyecto sola desde el directorio actual (`~/.claude/projects/<ruta con todo lo que no es letra o número cambiado por "-">`), sin rutas fijas de ningún equipo; solo si no la encuentra se le pasa como último argumento.
+Ejecuta `python3 <skill>/ahorro.py estado` desde el directorio del proyecto y muestra su salida tal cual: turnos, contexto actual y si conviene cerrar (aviso a partir de ~150k y urgente desde ~300k). No escribe nada. `ahorro.py` calcula la carpeta del proyecto sola desde el directorio actual (`~/.claude/projects/<ruta con todo lo que no es letra o número cambiado por "-">`), sin rutas fijas de ningún equipo; busca hacia arriba por las carpetas padre; solo si no la encuentra se le pasa `--carpeta RUTA`.
 
 ## `/other-sesion deshacer`
 
-Restaura el traspaso anterior: en el directorio de memoria del proyecto, intercambia `project_traspaso.md` y `project_traspaso.anterior.md` (así se puede volver a deshacer). Si no existe el `.anterior`, dilo y no cambies nada. Muestra al usuario la fecha y el tema de la primera línea del archivo restaurado. No toques el mapa ni `MEMORY.md`.
+Restaura el traspaso anterior: en el directorio de memoria del proyecto, intercambia `project_traspaso.md` y `project_traspaso.anterior.md` (así se puede volver a deshacer); después de intercambiar, deja `name: project-traspaso` en el vigente y `name: project-traspaso-anterior` en el otro. Si no existe el `.anterior`, dilo y no cambies nada. Muestra al usuario la fecha y el tema de la primera línea del archivo restaurado. No toques el mapa ni `MEMORY.md`.
 
 ## `/other-sesion ayuda`
 

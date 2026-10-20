@@ -9,6 +9,10 @@ DEST="${HOME}/.claude/skills/other-sesion"
 command -v git >/dev/null 2>&1 || { echo "Falta git / git is required" >&2; exit 1; }
 
 if [ -d "$DEST/.git" ]; then
+  if [ -n "$(git -C "$DEST" status --porcelain)" ]; then
+    echo "Cambiaste archivos locales / you changed local files. Haz: git -C $DEST stash ; vuelve a ejecutar ; git -C $DEST stash pop" >&2
+    exit 1
+  fi
   git -C "$DEST" pull --ff-only
 else
   mkdir -p "${HOME}/.claude/skills"
