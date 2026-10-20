@@ -2,25 +2,29 @@
 
 # other-sesion
 
-**Skill de Claude Code** (`claude-code-skill`).
+**English** · [Español](README.es.md)
 
-Skill de Claude Code para cerrar una sesión larga sin perder el hilo y gastando pocos tokens: guarda los puntos clave en la memoria del proyecto y deja listo el arranque de la sesión siguiente.
+**Claude Code skill** (`claude-code-skill`).
 
-## Comandos
+A Claude Code skill to close a long session without losing the thread, while spending few tokens: it saves the key points in the project's memory and sets up the start of the next session.
 
-| Comando | Qué hace |
+## Commands
+
+| Command | What it does |
 |---|---|
-| `/other-sesion` | Guarda traspaso y mapa; explica cómo continuar |
-| `/other-sesion clear` | Igual, y deja listo el `/clear` |
-| `/other-sesion retomar` | En sesión nueva: carga traspaso y mapa, resume y propone el primer pendiente |
-| `/other-sesion mapa` | Crea o actualiza el mapa del proyecto |
-| `/other-sesion compactar` | Da el texto para pegar en `/compact` |
-| `/other-sesion ahorro` | Estadísticas de tokens por sesión y entre marcas |
-| `/other-sesion ayuda` | Lista los comandos |
+| `/other-sesion` | Saves the handoff and the project map; explains how to continue |
+| `/other-sesion clear` | Same, and gets `/clear` ready |
+| `/other-sesion retomar` | In a new session: loads the handoff and map, summarizes and proposes the first pending task |
+| `/other-sesion mapa` | Creates or updates the project map |
+| `/other-sesion compactar` | Gives you the text to paste into `/compact` |
+| `/other-sesion ahorro` | Token statistics per session and between marks |
+| `/other-sesion ayuda` | Lists the commands |
 
-## Instalación
+Command names are in Spanish: `retomar` = resume, `mapa` = map, `compactar` = compact, `ahorro` = savings, `ayuda` = help.
 
-Clona el repositorio dentro de la carpeta de skills de Claude Code.
+## Installation
+
+Clone the repository into Claude Code's skills folder.
 
 macOS / Linux:
 
@@ -34,21 +38,23 @@ Windows (PowerShell):
 git clone https://github.com/Jhezs/other-sesion.git "$env:USERPROFILE\.claude\skills\other-sesion"
 ```
 
-Reinicia Claude Code y escribe `/other-sesion ayuda` para comprobar que se cargó.
+Restart Claude Code and type `/other-sesion ayuda` to check that it loaded.
 
-Para actualizar: `git -C ~/.claude/skills/other-sesion pull`.
+To update: `git -C ~/.claude/skills/other-sesion pull`.
 
-`ahorro.py` necesita Python 3 y no usa dependencias externas.
+`ahorro.py` needs Python 3 and has no external dependencies.
 
-## Nota
+## Note
 
-El skill escribe en la memoria del proyecto (`~/.claude/projects/<proyecto>/memory/`). Revisa `SKILL.md` antes de usarlo y ajústalo a tu forma de trabajar. Si el proyecto tiene `graphify-out/` (herramienta opcional graphify), el modo `mapa` lo aprovecha.
+The skill writes to the project's memory (`~/.claude/projects/<project>/memory/`). Review `SKILL.md` before using it and adapt it to your workflow. If the project has `graphify-out/` (optional graphify tool), the `mapa` mode uses it.
 
-## Licencia
+The instructions in `SKILL.md` and the skill's replies are in Spanish.
 
-MIT. Ver `LICENSE`.
+## License
 
-## Contribuidores
+MIT. See `LICENSE`.
 
-- **Claude** (Anthropic): escribió el código y la documentación.
-- **Jhezs**: dueño del proyecto; revisó y aprobó el código.
+## Contributors
+
+- **Claude** (Anthropic): wrote the code and the documentation.
+- **Jhezs**: project owner; reviewed and approved the code.
