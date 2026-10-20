@@ -18,13 +18,27 @@ A Claude Code skill to close a long session without losing the thread, while spe
 | `/other-sesion mapa` / `map` | Creates or updates the project map |
 | `/other-sesion compactar` / `compact` | Gives you the text to paste into `/compact` |
 | `/other-sesion ahorro` / `savings` | Token statistics per session and between marks |
+| `/other-sesion estado` / `status` | Current context of the session and whether it is time to close |
+| `/other-sesion deshacer` / `undo` | Restores the previous handoff |
 | `/other-sesion ayuda` / `help` | Lists the commands |
 
-Every command works in Spanish or English: `retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `ayuda` = `help`.
+Every command works in Spanish or English: `retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `estado` = `status`, `deshacer` = `undo`, `ayuda` = `help`.
 
 ## Installation
 
-Clone the repository into Claude Code's skills folder.
+One command (it works for any user; it uses your home folder, no fixed paths):
+
+```bash
+# macOS / Linux
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Jhezs/other-sesion/main/install.sh)"
+```
+
+```powershell
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/Jhezs/other-sesion/main/install.ps1 | iex
+```
+
+Or clone the repository into Claude Code's skills folder by hand.
 
 macOS / Linux:
 
@@ -42,7 +56,7 @@ Restart Claude Code and type `/other-sesion ayuda` to check that it loaded.
 
 To update: `git -C ~/.claude/skills/other-sesion pull`.
 
-`ahorro.py` needs Python 3 and has no external dependencies.
+`ahorro.py` needs Python 3 and has no external dependencies. It finds the project's folder in `~/.claude/projects` from your current directory on its own.
 
 ## Note
 

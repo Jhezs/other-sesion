@@ -4,7 +4,7 @@ description: >
   Cierra una sesión larga sin perder el hilo y gastando pocos tokens: guarda los puntos clave en la memoria del
   proyecto y deja listo el arranque de la sesión siguiente. Usar con /other-sesion (guardar y preparar el cierre),
   /other-sesion retomar (cargar el traspaso y el mapa en la sesión nueva), /other-sesion mapa (crear o actualizar la
-  "biblioteca" que dice dónde está todo en el proyecto) o /other-sesion compactar (dar las instrucciones para /compact), /other-sesion clear (guardar y dar el paso para limpiar) o /other-sesion ahorro (estadísticas de tokens) o /other-sesion ayuda (listar los comandos). Los modos también se aceptan en inglés: resume, map, compact, savings, help. También cuando el usuario diga "guarda los puntos clave", "pasemos a otra sesión" o "se está gastando mucho".
+  "biblioteca" que dice dónde está todo en el proyecto) o /other-sesion compactar (dar las instrucciones para /compact), /other-sesion clear (guardar y dar el paso para limpiar) o /other-sesion ahorro (estadísticas de tokens) o /other-sesion ayuda (listar los comandos). Los modos también se aceptan en inglés: resume, map, compact, savings, help. Además: /other-sesion estado (status) y /other-sesion deshacer (undo). También cuando el usuario diga "guarda los puntos clave", "pasemos a otra sesión" o "se está gastando mucho".
 ---
 
 # other-sesion
@@ -14,7 +14,7 @@ al inicio se vuelve a pagar en cada turno. Esta skill no necesita subagentes. No
 
 ## Alias en inglés
 
-Cada modo acepta su nombre en español o en inglés, con el mismo efecto: `retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `ayuda` = `help`. `clear` es igual en ambos. Si el argumento es uno de los nombres en inglés, aplica el modo español equivalente. Responde en el idioma en que escribió el usuario.
+Cada modo acepta su nombre en español o en inglés, con el mismo efecto: `retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `estado` = `status`, `deshacer` = `undo`, `ayuda` = `help`. `clear` es igual en ambos. Si el argumento es uno de los nombres en inglés, aplica el modo español equivalente. Responde en el idioma en que escribió el usuario.
 
 ## Modo por defecto: `/other-sesion` (guardar y preparar el cierre)
 
@@ -28,7 +28,8 @@ Cada modo acepta su nombre en español o en inglés, con el mismo efecto: `retom
    Omite lo que ya está en git, en `CLAUDE.md` o en el código. Convierte fechas relativas a absolutas. Nunca guardes claves,
    tokens ni datos personales.
 2. **Escribe UN archivo de traspaso** en el directorio de memoria del proyecto (la ruta está en tu prompt de sistema, en
-   «Memory»), con el nombre `project_traspaso.md`. Si ya existe, **sobrescríbelo** (no acumules traspasos viejos).
+   «Memory»), con el nombre `project_traspaso.md`. Si ya existe, antes cópialo a `project_traspaso.anterior.md`
+   (una sola copia, la anterior se pisa; así `deshacer` puede restaurarlo) y **sobrescribe** el original (no acumules traspasos viejos).
    Formato:
    ```
    ---
@@ -125,6 +126,14 @@ Mide tokens reales con `ahorro.py` (en esta carpeta; lee el campo `usage` de las
 - `/other-sesion ahorro` ejecuta `python <skill>/ahorro.py informe "<carpeta>"` y muestra la salida tal cual, más 2 líneas de lectura: gasto desde la última marca y si el «1er contexto» de la sesión nueva es menor que el «pico» de la anterior (eso es lo que ahorró el traspaso).
 - Tokens ≠ dinero: la cache leída es mucho más barata que la nueva; no sumes todo como si costara igual.
 
+## `/other-sesion estado`
+
+Ejecuta `python <skill>/ahorro.py estado` desde el directorio del proyecto y muestra su salida tal cual: turnos, contexto actual y si conviene cerrar (aviso a partir de ~150k y urgente desde ~300k). No escribe nada. `ahorro.py` calcula la carpeta del proyecto sola desde el directorio actual (`~/.claude/projects/<ruta con todo lo que no es letra o número cambiado por "-">`), sin rutas fijas de ningún equipo; solo si no la encuentra se le pasa como último argumento.
+
+## `/other-sesion deshacer`
+
+Restaura el traspaso anterior: en el directorio de memoria del proyecto, intercambia `project_traspaso.md` y `project_traspaso.anterior.md` (así se puede volver a deshacer). Si no existe el `.anterior`, dilo y no cambies nada. Muestra al usuario la fecha y el tema de la primera línea del archivo restaurado. No toques el mapa ni `MEMORY.md`.
+
 ## `/other-sesion ayuda`
 
 Muestra esta tabla y nada más:
@@ -136,6 +145,8 @@ Muestra esta tabla y nada más:
 | `/other-sesion mapa` / `map` | Crea o actualiza el mapa del proyecto |
 | `/other-sesion compactar` / `compact` | Da el texto para pegar en `/compact` |
 | `/other-sesion ahorro` / `savings` | Estadísticas de tokens por sesión y entre marcas |
+| `/other-sesion estado` / `status` | Contexto actual de la sesión y si conviene cerrar |
+| `/other-sesion deshacer` / `undo` | Restaura el traspaso anterior |
 | `/other-sesion ayuda` / `help` | Esta lista |
 
 Tolera errores de escritura en el argumento (p. ej. «osther», «retomr»): interprétalo por su parecido con un modo.
