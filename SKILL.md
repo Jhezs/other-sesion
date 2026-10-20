@@ -4,7 +4,7 @@ description: >
   Cierra una sesión larga sin perder el hilo y gastando pocos tokens: guarda los puntos clave en la memoria del
   proyecto y deja listo el arranque de la sesión siguiente. Usar con /other-sesion (guardar y preparar el cierre),
   /other-sesion retomar (cargar el traspaso y el mapa en la sesión nueva), /other-sesion mapa (crear o actualizar la
-  "biblioteca" que dice dónde está todo en el proyecto) o /other-sesion compactar (dar las instrucciones para /compact), /other-sesion clear (guardar y dar el paso para limpiar) o /other-sesion ahorro (estadísticas de tokens) o /other-sesion ayuda (listar los comandos). Los modos también se aceptan en inglés: resume, map, compact, savings, help. Además: /other-sesion estado (status) y /other-sesion deshacer (undo). También cuando el usuario diga "guarda los puntos clave", "pasemos a otra sesión" o "se está gastando mucho".
+  "biblioteca" que dice dónde está todo en el proyecto) o /other-sesion compactar (dar las instrucciones para /compact), /other-sesion clear (guardar y dar el paso para limpiar) o /other-sesion ahorro (estadísticas de tokens) o /other-sesion ayuda (listar los comandos). Los modos también se aceptan en inglés: resume, map, compact, savings, help. Además: /other-sesion estado (status), /other-sesion pendientes (pending) y /other-sesion deshacer (undo). También cuando el usuario diga "guarda los puntos clave", "pasemos a otra sesión" o "se está gastando mucho".
 ---
 
 # other-sesion
@@ -14,7 +14,7 @@ al inicio se vuelve a pagar en cada turno. Esta skill no necesita subagentes. No
 
 ## Alias en inglés
 
-Cada modo acepta su nombre en español o en inglés, con el mismo efecto: `retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `estado` = `status`, `deshacer` = `undo`, `ayuda` = `help`. `clear` es igual en ambos. Si el argumento es uno de los nombres en inglés, aplica el modo español equivalente. Responde en el idioma en que escribió el usuario.
+Cada modo acepta su nombre en español o en inglés, con el mismo efecto: `retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `estado` = `status`, `pendientes` = `pending`, `deshacer` = `undo`, `ayuda` = `help`. `clear` es igual en ambos. Si el argumento es uno de los nombres en inglés, aplica el modo español equivalente. Responde en el idioma en que escribió el usuario.
 
 ## Modo por defecto: `/other-sesion` (guardar y preparar el cierre)
 
@@ -130,6 +130,10 @@ Mide tokens reales con `ahorro.py` (en esta carpeta; lee el campo `usage` de las
 
 Ejecuta `python3 <skill>/ahorro.py estado` desde el directorio del proyecto y muestra su salida tal cual: turnos, contexto actual y si conviene cerrar (aviso a partir de ~150k y urgente desde ~300k). No escribe nada. `ahorro.py` calcula la carpeta del proyecto sola desde el directorio actual (`~/.claude/projects/<ruta con todo lo que no es letra o número cambiado por "-">`), sin rutas fijas de ningún equipo; busca hacia arriba por las carpetas padre; solo si no la encuentra se le pasa `--carpeta RUTA`.
 
+## `/other-sesion pendientes`
+
+Muestra solo la lista de pendientes, sin cargar el mapa ni retomar la sesión. Lee `project_traspaso.md` del directorio de memoria del proyecto y muestra únicamente la línea «Fecha» y la sección «Pendiente», tal cual, sin resumirla ni empezar a trabajar en ella. Si no existe el archivo o la sección, dilo en una frase. No escribe nada.
+
 ## `/other-sesion deshacer`
 
 Restaura el traspaso anterior: en el directorio de memoria del proyecto, intercambia `project_traspaso.md` y `project_traspaso.anterior.md` (así se puede volver a deshacer); después de intercambiar, deja `name: project-traspaso` en el vigente y `name: project-traspaso-anterior` en el otro. Si no existe el `.anterior`, dilo y no cambies nada. Muestra al usuario la fecha y el tema de la primera línea del archivo restaurado. No toques el mapa ni `MEMORY.md`.
@@ -146,6 +150,7 @@ Muestra esta tabla y nada más:
 | `/other-sesion compactar` / `compact` | Da el texto para pegar en `/compact` |
 | `/other-sesion ahorro` / `savings` | Estadísticas de tokens por sesión y entre marcas |
 | `/other-sesion estado` / `status` | Contexto actual de la sesión y si conviene cerrar |
+| `/other-sesion pendientes` / `pending` | Solo la lista de pendientes del último traspaso |
 | `/other-sesion deshacer` / `undo` | Restaura el traspaso anterior |
 | `/other-sesion ayuda` / `help` | Esta lista |
 

@@ -19,10 +19,11 @@ A Claude Code skill to close a long session without losing the thread, while spe
 | `/other-sesion compactar` / `compact` | Gives you the text to paste into `/compact` |
 | `/other-sesion ahorro` / `savings` | Token statistics per session and between marks |
 | `/other-sesion estado` / `status` | Current context of the session and whether it is time to close |
+| `/other-sesion pendientes` / `pending` | Only the pending-tasks list from the last handoff |
 | `/other-sesion deshacer` / `undo` | Restores the previous handoff |
 | `/other-sesion ayuda` / `help` | Lists the commands |
 
-Every command works in Spanish or English: `retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `estado` = `status`, `deshacer` = `undo`, `ayuda` = `help`.
+Every command works in Spanish or English: `retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `estado` = `status`, `pendientes` = `pending`, `deshacer` = `undo`, `ayuda` = `help`.
 
 ## Installation
 

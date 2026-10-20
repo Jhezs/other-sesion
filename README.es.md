@@ -19,10 +19,11 @@ Skill de Claude Code para cerrar una sesión larga sin perder el hilo y gastando
 | `/other-sesion compactar` / `compact` | Da el texto para pegar en `/compact` |
 | `/other-sesion ahorro` / `savings` | Estadísticas de tokens por sesión y entre marcas |
 | `/other-sesion estado` / `status` | Contexto actual de la sesión y si conviene cerrar |
+| `/other-sesion pendientes` / `pending` | Solo la lista de pendientes del último traspaso |
 | `/other-sesion deshacer` / `undo` | Restaura el traspaso anterior |
 | `/other-sesion ayuda` / `help` | Lista los comandos |
 
-Cada comando funciona en español o en inglés (`retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `estado` = `status`, `deshacer` = `undo`, `ayuda` = `help`).
+Cada comando funciona en español o en inglés (`retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `estado` = `status`, `pendientes` = `pending`, `deshacer` = `undo`, `ayuda` = `help`).
 
 ## Instalación
 
