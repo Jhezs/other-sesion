@@ -14,13 +14,13 @@ A Claude Code skill to close a long session without losing the thread, while spe
 |---|---|
 | `/other-sesion` | Saves the handoff and the project map; explains how to continue |
 | `/other-sesion clear` | Same, and gets `/clear` ready |
-| `/other-sesion retomar` | In a new session: loads the handoff and map, summarizes and proposes the first pending task |
-| `/other-sesion mapa` | Creates or updates the project map |
-| `/other-sesion compactar` | Gives you the text to paste into `/compact` |
-| `/other-sesion ahorro` | Token statistics per session and between marks |
-| `/other-sesion ayuda` | Lists the commands |
+| `/other-sesion retomar` / `resume` | In a new session: loads the handoff and map, summarizes and proposes the first pending task |
+| `/other-sesion mapa` / `map` | Creates or updates the project map |
+| `/other-sesion compactar` / `compact` | Gives you the text to paste into `/compact` |
+| `/other-sesion ahorro` / `savings` | Token statistics per session and between marks |
+| `/other-sesion ayuda` / `help` | Lists the commands |
 
-Command names are in Spanish: `retomar` = resume, `mapa` = map, `compactar` = compact, `ahorro` = savings, `ayuda` = help.
+Every command works in Spanish or English: `retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `ayuda` = `help`.
 
 ## Installation
 

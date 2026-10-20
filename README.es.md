@@ -14,11 +14,13 @@ Skill de Claude Code para cerrar una sesión larga sin perder el hilo y gastando
 |---|---|
 | `/other-sesion` | Guarda traspaso y mapa; explica cómo continuar |
 | `/other-sesion clear` | Igual, y deja listo el `/clear` |
-| `/other-sesion retomar` | En sesión nueva: carga traspaso y mapa, resume y propone el primer pendiente |
-| `/other-sesion mapa` | Crea o actualiza el mapa del proyecto |
-| `/other-sesion compactar` | Da el texto para pegar en `/compact` |
-| `/other-sesion ahorro` | Estadísticas de tokens por sesión y entre marcas |
-| `/other-sesion ayuda` | Lista los comandos |
+| `/other-sesion retomar` / `resume` | En sesión nueva: carga traspaso y mapa, resume y propone el primer pendiente |
+| `/other-sesion mapa` / `map` | Crea o actualiza el mapa del proyecto |
+| `/other-sesion compactar` / `compact` | Da el texto para pegar en `/compact` |
+| `/other-sesion ahorro` / `savings` | Estadísticas de tokens por sesión y entre marcas |
+| `/other-sesion ayuda` / `help` | Lista los comandos |
+
+Cada comando funciona en español o en inglés (`retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `ayuda` = `help`).
 
 ## Instalación
 

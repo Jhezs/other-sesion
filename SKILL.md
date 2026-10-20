@@ -4,13 +4,17 @@ description: >
   Cierra una sesión larga sin perder el hilo y gastando pocos tokens: guarda los puntos clave en la memoria del
   proyecto y deja listo el arranque de la sesión siguiente. Usar con /other-sesion (guardar y preparar el cierre),
   /other-sesion retomar (cargar el traspaso y el mapa en la sesión nueva), /other-sesion mapa (crear o actualizar la
-  "biblioteca" que dice dónde está todo en el proyecto) o /other-sesion compactar (dar las instrucciones para /compact), /other-sesion clear (guardar y dar el paso para limpiar) o /other-sesion ahorro (estadísticas de tokens) o /other-sesion ayuda (listar los comandos). También cuando el usuario diga "guarda los puntos clave", "pasemos a otra sesión" o "se está gastando mucho".
+  "biblioteca" que dice dónde está todo en el proyecto) o /other-sesion compactar (dar las instrucciones para /compact), /other-sesion clear (guardar y dar el paso para limpiar) o /other-sesion ahorro (estadísticas de tokens) o /other-sesion ayuda (listar los comandos). Los modos también se aceptan en inglés: resume, map, compact, savings, help. También cuando el usuario diga "guarda los puntos clave", "pasemos a otra sesión" o "se está gastando mucho".
 ---
 
 # other-sesion
 
 Objetivo: que una sesión nueva retome el trabajo leyendo muy poco (menos de 2.500 tokens entre traspaso y mapa), porque todo lo que se carga
 al inicio se vuelve a pagar en cada turno. Esta skill no necesita subagentes. No releas archivos del proyecto para esto: trabaja con lo que ya está en la conversación.
+
+## Alias en inglés
+
+Cada modo acepta su nombre en español o en inglés, con el mismo efecto: `retomar` = `resume`, `mapa` = `map`, `compactar` = `compact`, `ahorro` = `savings`, `ayuda` = `help`. `clear` es igual en ambos. Si el argumento es uno de los nombres en inglés, aplica el modo español equivalente. Responde en el idioma en que escribió el usuario.
 
 ## Modo por defecto: `/other-sesion` (guardar y preparar el cierre)
 
@@ -124,15 +128,15 @@ Mide tokens reales con `ahorro.py` (en esta carpeta; lee el campo `usage` de las
 ## `/other-sesion ayuda`
 
 Muestra esta tabla y nada más:
-| Comando | Qué hace |
+| Comando (español / English) | Qué hace |
 |---|---|
 | `/other-sesion` | Guarda traspaso y mapa; explica cómo continuar |
 | `/other-sesion clear` | Igual, y deja listo el `/clear` |
-| `/other-sesion retomar` | En sesión nueva: carga traspaso y mapa, resume y propone el primer pendiente |
-| `/other-sesion mapa` | Crea o actualiza el mapa del proyecto |
-| `/other-sesion compactar` | Da el texto para pegar en `/compact` |
-| `/other-sesion ahorro` | Estadísticas de tokens por sesión y entre marcas |
-| `/other-sesion ayuda` | Esta lista |
+| `/other-sesion retomar` / `resume` | En sesión nueva: carga traspaso y mapa, resume y propone el primer pendiente |
+| `/other-sesion mapa` / `map` | Crea o actualiza el mapa del proyecto |
+| `/other-sesion compactar` / `compact` | Da el texto para pegar en `/compact` |
+| `/other-sesion ahorro` / `savings` | Estadísticas de tokens por sesión y entre marcas |
+| `/other-sesion ayuda` / `help` | Esta lista |
 
 Tolera errores de escritura en el argumento (p. ej. «osther», «retomr»): interprétalo por su parecido con un modo.
 
